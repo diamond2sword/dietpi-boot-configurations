@@ -80,8 +80,10 @@ echo_as_red "installing preferred apps"
 }
 
 echo_as_red "registering username: \"admin\" password: \"12345\""
-useradd -m -s /bin/bash admin && 
-echo_as_red admin:12345 | chpasswd
+{
+	useradd -m -s /bin/bash admin 
+	echo admin:12345 | chpasswd
+}
 
 echo_as_red "rebooting"
 reboot
