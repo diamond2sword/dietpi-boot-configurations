@@ -14,7 +14,9 @@ apt install -y xarchiver
 apt install -y python
 apt install -y python3
 apt install -y thonny
-
+apt install -y onboard
+apt install -y matchbox-keyboard
+	
 useradd -m -s /bin/bash admin
 echo admin:12345 | chpasswd
 reboot
