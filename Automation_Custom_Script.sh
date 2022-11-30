@@ -22,15 +22,6 @@ echo_as_red "installing graphical desktop application"
 	apt install -y eog 
 }
 
-echo_as_red "installing office applications"
-{
-	echo_as_blue "installing all-in-one word processor, presentation, spreadsheed application"
-	apt install -y libreoffice
-
-	echo_as_blue "installing email client"
-	apt install -y thunderbird
-}
-
 echo_as_red "installing office tools"
 {
 	echo_as_blue "installing PDF document viewer"
@@ -64,7 +55,7 @@ echo_as_red "installing general tools"
 echo_as_red "installing virtual keyboards"
 {
 	echo_as_blue "installing matchbox keyboard"
-	apt install -y matchbox-keyboard
+	apt install -y matchbox-keyboardo
 
 	echo_as_blue "installing onboard keyboard"
 	apt install -y onboard
@@ -72,8 +63,6 @@ echo_as_red "installing virtual keyboards"
 
 echo_as_red "installing preferred apps"
 {
-	echo_as_blue "installing python ide"
-	apt install -y thonny
 
 	echo_as_blue "installing web browser"
 	apt install -y midori 
