@@ -50,7 +50,7 @@ AUTO_SETUP_BOOT_WAIT_FOR_NETWORK=1
 # Swap space size to generate: 0 => disable | 1 => auto | 2 and up => size in MiB
 AUTO_SETUP_SWAPFILE_SIZE=1
 # Swap space location: "zram" => swap space on /dev/zram0 (auto-size = 50% of RAM size) | /path/to/file => swap file at location (auto-size = 2 GiB minus RAM size)
-AUTO_SETUP_SWAPFILE_LOCATION=/dev/zram0
+AUTO_SETUP_SWAPFILE_LOCATION=/var/zram0
 
 # Set to "1" to disable HDMI/video output and framebuffers on Raspberry Pi, to reduce power consumption and memory usage: Works on RPi only!
 AUTO_SETUP_HEADLESS=0
@@ -98,7 +98,7 @@ AUTO_SETUP_WEB_SERVER_INDEX=0
 # - Desktop preference: 0=LXDE | -1=Xfce | -2=MATE | -3=LXQt | -4=GNUstep
 AUTO_SETUP_DESKTOP_INDEX=0
 # - Browser preference: 0=None | -1=Firefox | -2=Chromium
-AUTO_SETUP_BROWSER_INDEX=-2
+AUTO_SETUP_BROWSER_INDEX=0
 
 # DietPi-Autostart: 0=Console | 7=Console autologin | 1=Kodi | 2=Desktop autologin | 16=Desktop | 4=OpenTyrian | 5=DietPi-CloudShell | 6=Amiberry fast boot | 8=Amiberry standard boot | 9=DDX-Rebirth | 10=CAVA Spectrum | 11=Chromium kiosk | 14=Custom script (background) | 17=Custom script (foreground)
 # - This will be effective on 2nd boot, after first run update and installs have been done.
@@ -130,9 +130,7 @@ AUTO_SETUP_GLOBAL_PASSWORD=dietpi # Password has been encrypted and saved to roo
 # - DietPi will automatically install all dependencies, like ALSA/X11 for desktops etc.
 # - E.g. the following (without the leading "#") will install the LXDE desktop automatically on first boot:
 AUTO_SETUP_INSTALL_SOFTWARE_ID=23    # Lxde
-AUTO_SETUP_INSTALL_SOFTWARE_ID=29    # Xrdp
 AUTO_SETUP_INSTALL_SOFTWARE_ID=174   # GIMP
-AUTO_SETUP_INSTALL_SOFTWARE_ID=187   # CUPS
 AUTO_SETUP_INSTALL_SOFTWARE_ID=130   # Python 3 pip
 AUTO_SETUP_INSTALL_SOFTWARE_ID=20    # vim
 
@@ -230,7 +228,7 @@ CONFIG_NTP_MIRROR=debian.pool.ntp.org
 #	0=Allow password logins for all users, including root
 #	root=Disable password login for root user only
 #	1=Disable password logins for all users, assure that you have a valid SSH key applied!
-SOFTWARE_DISABLE_SSH_PASSWORD_LOGINS=0
+SOFTWARE_DISABLE_SSH_PASSWORD_LOGINS=root
 
 # VNC Server
 SOFTWARE_VNCSERVER_WIDTH=1280
