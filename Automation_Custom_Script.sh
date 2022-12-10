@@ -39,7 +39,7 @@ EOF
 )
 
 finish_by_rebooting () {
-	reboot
+    reboot
 }
 
 install_visual_recognition_project () {
@@ -72,7 +72,7 @@ create_dependency_scripts () {
 }
 
 include_dependency_strings () {
-	eval "$STRINGS"
+    eval "$STRINGS"
 }
 
 create_file_for () {
@@ -95,14 +95,14 @@ SCRIPTS=$(cat << \EOF
 ####################################################################)
 
 include_dependencies_default () {
-	include_all ${DEPENDENCY_DEFAULT_NAMES[@]}
+    include_all ${DEPENDENCY_DEFAULT_NAMES[@]}
 }
 
 include_all () {
-	dependencies=("$@")
-	for dependency in ${dependencies[@]}; do {
-		include $dependency
-	} done
+    dependencies=("$@")
+    for dependency in ${dependencies[@]}; do {
+	include $dependency
+    } done
 }
 
 include () {
