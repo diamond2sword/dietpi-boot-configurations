@@ -1,3 +1,5 @@
+#!/bin/bash
+
 main () {
 	include_dependency_strings
 	create_dependency_scripts
@@ -28,7 +30,8 @@ EOF
 PATHS=$(cat << \EOF
 ###################################################################)
 ROOT_PATH="/root"
-PROJECT_PATH="$ROOT_PATH/$PROJECT_NAME"
+DESKTOP_PATH="$ROOT_PATH/Desktop"
+PROJECT_PATH="$DESKTOP_PATH/$PROJECT_NAME"
 TEST_DATASET_PATH="$PROJECT_PATH/$PROJECT_TEST_DATASET_NAME"
 CLASS_PATHS=(ls -d $TEST_DATA_SET_PATH/*/)
 ANY_CLASS_PATH="$TEST_DATASET_PATH/$PROJECT_ANY_CLASS_NAME"
@@ -46,10 +49,10 @@ install_visual_recognition_project () {
 }
 
 install_dependency_packages () {
-	packages=("$PACKAGES")
-	pip3_packages=("$PIP3_PACKAGES")
-	desktop_packages=("$DESKTOP_PACKAGES")
-	force_install apt ${desktop_packages[@]}
+    packages=("$PACKAGES")
+    pip3_packages=("$PIP3_PACKAGES")
+    desktop_packages=("$DESKTOP_PACKAGES")
+    force_install apt ${desktop_packages[@]}
     force_install apt ${packages[@]}
     force_install pip3 ${pip3_packages[@]}
 }
