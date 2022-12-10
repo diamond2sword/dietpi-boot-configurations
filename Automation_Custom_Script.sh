@@ -57,7 +57,8 @@ install_dependency_packages () {
     force_install pip3 ${pip3_packages[@]}
 }
 
-include_dependency_scripts () {  source $DEPENDENCY_PATH/SCRIPTS.sh
+include_dependency_scripts () {  
+    source $DEPENDENCY_PATH/SCRIPTS.sh
     include_dependencies_default
 }
 
