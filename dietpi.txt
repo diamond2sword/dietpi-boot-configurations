@@ -121,7 +121,7 @@ AUTO_SETUP_AUTOMATED=1
 # - During first run setup, the password is removed from this file and instead encrypted and saved to root filesystem.
 # - WARN: The default SSH server Dropbear does not support passwords over 100 characters.
 # - WARN: We cannot guarantee that all software options can handle special characters like \"$.
-#AUTO_SETUP_GLOBAL_PASSWORD=dietpi # Password has been encrypted and saved to rootfs
+AUTO_SETUP_GLOBAL_PASSWORD=dietpi # Password has been encrypted and saved to rootfs
 
 # Software to automatically install
 # - Requires AUTO_SETUP_AUTOMATED=1
