@@ -50,7 +50,7 @@ AUTO_SETUP_BOOT_WAIT_FOR_NETWORK=1
 # Swap space size to generate: 0 => disable | 1 => auto | 2 and up => size in MiB
 AUTO_SETUP_SWAPFILE_SIZE=1
 # Swap space location: "zram" => swap space on /dev/zram0 (auto-size = 50% of RAM size) | /path/to/file => swap file at location (auto-size = 2 GiB minus RAM size)
-AUTO_SETUP_SWAPFILE_LOCATION=/var/zram0
+AUTO_SETUP_SWAPFILE_LOCATION=/var/swap
 
 # Set to "1" to disable HDMI/video output and framebuffers on Raspberry Pi, to reduce power consumption and memory usage: Works on RPi only!
 AUTO_SETUP_HEADLESS=0
@@ -139,7 +139,7 @@ AUTO_SETUP_INSTALL_SOFTWARE_ID=20    # vim
 #------------------------------------------------------------------------------------------------------
 # DietPi-Survey: 1=opt in | 0=opt out | -1=ask on first call
 # - https://dietpi.com/docs/dietpi_tools/#miscellaneous (see tab 'DietPi Survey')
-SURVEY_OPTED_IN=0
+SURVEY_OPTED_IN=-1
 
 #------------------------------------------------------------------------------------------------------
 ##### DietPi-Config settings #####
@@ -228,7 +228,7 @@ CONFIG_NTP_MIRROR=debian.pool.ntp.org
 #	0=Allow password logins for all users, including root
 #	root=Disable password login for root user only
 #	1=Disable password logins for all users, assure that you have a valid SSH key applied!
-SOFTWARE_DISABLE_SSH_PASSWORD_LOGINS=root
+SOFTWARE_DISABLE_SSH_PASSWORD_LOGINS=0
 
 # VNC Server
 SOFTWARE_VNCSERVER_WIDTH=1280
