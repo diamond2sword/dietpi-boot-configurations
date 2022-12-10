@@ -93,18 +93,15 @@ add_sh_suffix_to () {
 
 SCRIPTS=$(cat << \EOF
 ####################################################################)
-
 include_dependencies_default () {
 	include_all ${DEPENDENCY_DEFAULT_NAMES[@]}
 }
-
 include_all () {
 	dependencies=("$@")
 	for dependency in ${dependencies[@]}; do {
 		include $dependency
 	} done
 }
-
 include () {
     dependency_name=$1
     file_name=$(add_sh_suffix_to $dependency_name)
@@ -113,13 +110,11 @@ include () {
     dependency_args=("$@")
     source $file_path ${dependency_args[@]}
 }
-
 add_sh_suffix_to () {
     dependency_name=$1
     file_name=${dependency_name}.sh
     echo $file_name
 }
-
 EOF
 )
 
@@ -143,7 +138,6 @@ force_install () {
         install_all $package_manager ${packages[@]}
     } done
 }
-
 update () {
     package_manager=$1
     sudo=$(get_sudo_string)
@@ -160,7 +154,6 @@ update () {
         };;
     esac
 }
-
 is_installed_all () {
     package_manager=$1
     shift
@@ -173,7 +166,6 @@ is_installed_all () {
     } done
     return 0
 }
-
 install_all () {
     package_manager=$1
     shift
@@ -182,7 +174,6 @@ install_all () {
         install $package_manager $package
     } done
 }
-
 is_installed () {
     package_manager=$1
     package=$2
@@ -198,7 +189,6 @@ is_installed () {
         };;
     esac
 }
-
 get_sudo_string () {
     string=""
     is_installed apt sudo && {
@@ -206,7 +196,6 @@ get_sudo_string () {
     }
     echo $string
 }
-
 install () {
     package_manager=$1
     package=$2
@@ -223,26 +212,21 @@ install () {
         };;
     esac
 }
-
 is_force_install_limited () {
     (($MAX_FORCE_INSTALL != 0)) && {
         return 0
     }
 }
-
 is_number () {
     (($1 + 0)) &> /dev/null && {
         return 0
     }
 }
-
 MAX_FORCE_INSTALL=0
-
 input=$1
 is_number $input && {
     MAX_FORCE_INSTALL=$input
 }
-
 EOF
 )
 
