@@ -12,7 +12,7 @@ main () {
 STRINGS=$(cat << \EOF
 ###################################################################)
 DEPENDENCY_PATH="/boot/automation-script-dependencies"
-DEPENDENCY_NAMES="STRINGS SCRIPTS FORCE_INSTALL"
+DEPENDENCY_NAMES="STRINGS SCRIPTS FORCE_INSTALL PATHS"
 DEPENDENCY_DEFAULT_NAMES="FORCE_INSTALL PATHS"
 DESKTOP_PACKAGES="flameshot eog evince xsane keepassxc kcalc gedit krusader konsole xarchiver onboard midori"
 PACKAGES="sudo vim subversion"
