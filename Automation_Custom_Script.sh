@@ -42,7 +42,7 @@ finish_by_rebooting () {
 	reboot
 }
 
-install_visual_recognition_project () {
+install_visual_recognition_project () {PROJECT_INSTALL_FILE_NAME="install.py"
     mkdir -p $PROJECT_PATH
     svn export --force $PROJECT_GITHUB_LINK $PROJECT_PATH
     python3 $PROJECT_PATH/$PROJECT_INSTALL_NAME
