@@ -20,7 +20,7 @@ PIP3_PACKAGES="pillow onnxruntime numpy torchvision gdown term-image"
 PROJECT_NAME="project"
 PICTURE_NAME="test.jpg"
 PROJECT_INSTALL_FILE_NAME="install.py"
-PROJECT_MAIN_FILE_NAME="test_onnx.py"
+PROJECT_MAIN_FILE_NAME=test_onnx.py"
 PROJECT_ANY_CLASS_NAME="Any"
 PROJECT_TEST_DATASET_NAME="test-dataset"
 PROJECT_GITHUB_LINK="https://github.com/diamond2sword/visual-recognition-project/trunk/project-mobile/project-v1"
@@ -42,7 +42,7 @@ finish_by_rebooting () {
 	reboot
 }
 
-install_visual_recognition_project () {PROJECT_INSTALL_FILE_NAME="install.py"
+install_visual_recognition_project () {
     mkdir -p $PROJECT_PATH
     svn export --force $PROJECT_GITHUB_LINK $PROJECT_PATH
     python3 $PROJECT_PATH/$PROJECT_INSTALL_NAME
@@ -57,8 +57,7 @@ install_dependency_packages () {
     force_install pip3 ${pip3_packages[@]}
 }
 
-include_dependency_scripts () {
-    source $DEPENDENCY_PATH/SCRIPTS.sh
+include_dependency_scripts () {  source $DEPENDENCY_PATH/SCRIPTS.sh
     include_dependencies_default
 }
 
@@ -93,15 +92,18 @@ add_sh_suffix_to () {
 
 SCRIPTS=$(cat << \EOF
 ####################################################################)
+
 include_dependencies_default () {
 	include_all ${DEPENDENCY_DEFAULT_NAMES[@]}
 }
+
 include_all () {
 	dependencies=("$@")
 	for dependency in ${dependencies[@]}; do {
 		include $dependency
 	} done
 }
+
 include () {
     dependency_name=$1
     file_name=$(add_sh_suffix_to $dependency_name)
@@ -110,11 +112,13 @@ include () {
     dependency_args=("$@")
     source $file_path ${dependency_args[@]}
 }
+
 add_sh_suffix_to () {
     dependency_name=$1
     file_name=${dependency_name}.sh
     echo $file_name
 }
+
 EOF
 )
 
@@ -138,6 +142,7 @@ force_install () {
         install_all $package_manager ${packages[@]}
     } done
 }
+
 update () {
     package_manager=$1
     sudo=$(get_sudo_string)
@@ -154,6 +159,7 @@ update () {
         };;
     esac
 }
+
 is_installed_all () {
     package_manager=$1
     shift
@@ -166,6 +172,7 @@ is_installed_all () {
     } done
     return 0
 }
+
 install_all () {
     package_manager=$1
     shift
@@ -174,6 +181,7 @@ install_all () {
         install $package_manager $package
     } done
 }
+
 is_installed () {
     package_manager=$1
     package=$2
@@ -189,6 +197,7 @@ is_installed () {
         };;
     esac
 }
+
 get_sudo_string () {
     string=""
     is_installed apt sudo && {
@@ -196,6 +205,7 @@ get_sudo_string () {
     }
     echo $string
 }
+
 install () {
     package_manager=$1
     package=$2
@@ -212,21 +222,26 @@ install () {
         };;
     esac
 }
+
 is_force_install_limited () {
     (($MAX_FORCE_INSTALL != 0)) && {
         return 0
     }
 }
+
 is_number () {
     (($1 + 0)) &> /dev/null && {
         return 0
     }
 }
+
 MAX_FORCE_INSTALL=0
+
 input=$1
 is_number $input && {
     MAX_FORCE_INSTALL=$input
 }
+
 EOF
 )
 
