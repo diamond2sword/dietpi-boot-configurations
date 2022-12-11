@@ -197,7 +197,7 @@ CONFIG_CHECK_APT_UPDATES=1
 CONFIG_NTP_MODE=2
 
 # Serial Console: Set to 0 if you do not require serial console.
-CONFIG_SERIAL_CONSOLE_ENABLE=0
+CONFIG_SERIAL_CONSOLE_ENABLE=1
 
 # Sound card
 CONFIG_SOUNDCARD=none
@@ -228,7 +228,7 @@ CONFIG_NTP_MIRROR=debian.pool.ntp.org
 #	0=Allow password logins for all users, including root
 #	root=Disable password login for root user only
 #	1=Disable password logins for all users, assure that you have a valid SSH key applied!
-SOFTWARE_DISABLE_SSH_PASSWORD_LOGINS=root
+SOFTWARE_DISABLE_SSH_PASSWORD_LOGINS=0
 
 # VNC Server
 SOFTWARE_VNCSERVER_WIDTH=1280
