@@ -44,7 +44,7 @@ finish_by_rebooting () {
 install_visual_recognition_project () {
     mkdir -p $PROJECT_PATH
     svn export --force $PROJECT_GITHUB_LINK $PROJECT_PATH
-    python3 $PROJECT_PATH/$PROJECT_INSTALL_NAME
+    python3 $PROJECT_PATH/$PROJECT_FILE_INSTALL_NAME
 }
 
 install_dependency_packages () {
