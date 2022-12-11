@@ -13,17 +13,16 @@ STRINGS=$(cat << \EOF
 ###################################################################)
 DEPENDENCY_PATH="/boot/automation-script-dependencies"
 DEPENDENCY_NAMES="STRINGS SCRIPTS FORCE_INSTALL PATHS"
-DEPENDENCY_DEFAULT_NAMES="FORCE_INSTALL PATHS"
-DESKTOP_PACKAGES="flameshot eog evince xsane keepassxc kcalc gedit krusader konsole xarchiver onboard midori"
-PACKAGES="sudo vim subversion"
-PIP3_PACKAGES="pillow onnxruntime numpy torchvision gdown term-image"
+DESKTOP_PACKAGES="onboard gedit"
+PACKAGES="sudo vim pip-python3 subversion libgl1-mesa-glx"
+PIP3_PACKAGES="pillow onnxruntime numpy torchvision gdown term-image cv2"
 PROJECT_NAME="project"
 PICTURE_NAME="test.jpg"
 PROJECT_INSTALL_FILE_NAME="install.py"
-PROJECT_MAIN_FILE_NAME="test_onnx.py"
+PROJECT_MAIN_FILE_NAME="onnx.py"
 PROJECT_ANY_CLASS_NAME="Any"
 PROJECT_TEST_DATASET_NAME="test-dataset"
-PROJECT_GITHUB_LINK="https://github.com/diamond2sword/visual-recognition-project/trunk/project-mobile/project-v1"
+PROJECT_GITHUB_LINK="https://github.com/diamond2sword/visual-recognition-project/trunk/project-raspberrypi/project-v1"
 EOF
 )
 
@@ -95,7 +94,8 @@ SCRIPTS=$(cat << \EOF
 ####################################################################)
 
 include_dependencies_default () {
-    include_all ${DEPENDENCY_DEFAULT_NAMES[@]}
+    dependencies=("$DEPENDENCY_NAMES")
+    include_all ${dependencies[@]}
 }
 
 include_all () {
@@ -107,10 +107,10 @@ include_all () {
 
 include () {
     dependency_name=$1
-    file_name=$(add_sh_suffix_to $dependency_name)
-    file_path=$DEPENDENCY_PATH/$file_name
     shift
     dependency_args=("$@")
+    file_name=$(add_sh_suffix_to $dependency_name)
+    file_path=$DEPENDENCY_PATH/$file_name
     source $file_path ${dependency_args[@]}
 }
 
