@@ -129,21 +129,17 @@ AUTO_SETUP_GLOBAL_PASSWORD=dietpi
 # - Add as many entries as you wish, one each line.
 # - DietPi will automatically install all dependencies, like ALSA/X11 for desktops etc.
 # - E.g. the following (without the leading "#") will install the LXDE desktop automatically on first boot:
-AUTO_SETUP_INSTALL_SOFTWARE_ID=23
-# Lxde
-AUTO_SETUP_INSTALL_SOFTWARE_ID=174
-# GIMP
-AUTO_SETUP_INSTALL_SOFTWARE_ID=130
-# Python 3 pip
-AUTO_SETUP_INSTALL_SOFTWARE_ID=20
-# vim
+AUTO_SETUP_INSTALL_SOFTWARE_ID=23 # lxde
+AUTO_SETUP_INSTALL_SOFTWARE_ID=174 # gimp
+AUTO_SETUP_INSTALL_SOFTWARE_ID=130 # python3-pip
+AUTO_SETUP_INSTALL_SOFTWARE_ID=20 # vim
 
 #------------------------------------------------------------------------------------------------------
 ##### Misc DietPi program settings #####
 #------------------------------------------------------------------------------------------------------
 # DietPi-Survey: 1=opt in | 0=opt out | -1=ask on first call
 # - https://dietpi.com/docs/dietpi_tools/#miscellaneous (see tab 'DietPi Survey')
-SURVEY_OPTED_IN=0
+SURVEY_OPTED_IN=-1
 
 #------------------------------------------------------------------------------------------------------
 ##### DietPi-Config settings #####
