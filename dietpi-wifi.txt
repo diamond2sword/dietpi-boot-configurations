@@ -5,9 +5,9 @@ aWIFI_SSID[0]='dietpi'
 # - WiFi key: If no key/open, leave this blank
 # - In case of WPA-PSK, alternatively enter the 64-digit hexadecimal key returned by wpa_passphrase
 # - Please replace single quote characters ' in your key with '\''. No other escaping is required.
-aWIFI_KEY[0]='Ginuel123c++dietpi'
+aWIFI_KEY[0]=''
 # - Key type: NONE (no key/open) | WPA-PSK | WEP | WPA-EAP (then use settings below)
-aWIFI_KEYMGR[0]='WPA-PSK'
+aWIFI_KEYMGR[0]='NONE'
 # - WPA-EAP options: Only fill if WPA-EAP is set above
 aWIFI_PROTO[0]=''
 aWIFI_PAIRWISE[0]=''
