@@ -139,7 +139,7 @@ AUTO_SETUP_INSTALL_SOFTWARE_ID=20 # vim
 #------------------------------------------------------------------------------------------------------
 # DietPi-Survey: 1=opt in | 0=opt out | -1=ask on first call
 # - https://dietpi.com/docs/dietpi_tools/#miscellaneous (see tab 'DietPi Survey')
-SURVEY_OPTED_IN=-1
+SURVEY_OPTED_IN=0
 
 #------------------------------------------------------------------------------------------------------
 ##### DietPi-Config settings #####
@@ -197,7 +197,7 @@ CONFIG_CHECK_APT_UPDATES=1
 CONFIG_NTP_MODE=2
 
 # Serial Console: Set to 0 if you do not require serial console.
-CONFIG_SERIAL_CONSOLE_ENABLE=0
+CONFIG_SERIAL_CONSOLE_ENABLE=1
 
 # Sound card
 CONFIG_SOUNDCARD=none
