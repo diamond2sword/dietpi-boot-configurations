@@ -1,0 +1,1 @@
+systemctl enable dietpi-fs_partition_resize.service
