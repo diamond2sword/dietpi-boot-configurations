@@ -48,7 +48,7 @@ AUTO_SETUP_BOOT_WAIT_FOR_NETWORK=1
 
 ##### Misc options #####
 # Swap space size to generate: 0 => disable | 1 => auto | 2 and up => size in MiB
-AUTO_SETUP_SWAPFILE_SIZE=1
+AUTO_SETUP_SWAPFILE_SIZE=0
 # Swap space location: "zram" => swap space on /dev/zram0 (auto-size = 50% of RAM size) | /path/to/file => swap file at location (auto-size = 2 GiB minus RAM size)
 AUTO_SETUP_SWAPFILE_LOCATION=/var/swap
 
@@ -121,7 +121,7 @@ AUTO_SETUP_AUTOMATED=1
 # - During first run setup, the password is removed from this file and instead encrypted and saved to root filesystem.
 # - WARN: The default SSH server Dropbear does not support passwords over 100 characters.
 # - WARN: We cannot guarantee that all software options can handle special characters like \"$.
-#AUTO_SETUP_GLOBAL_PASSWORD=dietpi
+AUTO_SETUP_GLOBAL_PASSWORD=dietpi
 
 # Software to automatically install
 # - Requires AUTO_SETUP_AUTOMATED=1
@@ -139,7 +139,7 @@ AUTO_SETUP_INSTALL_SOFTWARE_ID=20 # vim
 #------------------------------------------------------------------------------------------------------
 # DietPi-Survey: 1=opt in | 0=opt out | -1=ask on first call
 # - https://dietpi.com/docs/dietpi_tools/#miscellaneous (see tab 'DietPi Survey')
-SURVEY_OPTED_IN=-1
+SURVEY_OPTED_IN=0
 
 #------------------------------------------------------------------------------------------------------
 ##### DietPi-Config settings #####
