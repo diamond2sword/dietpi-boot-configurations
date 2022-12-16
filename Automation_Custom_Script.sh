@@ -15,7 +15,7 @@ DEPENDENCY_PATH="/boot/automation-script-dependencies"
 DEPENDENCY_NAMES="STRINGS SCRIPTS FORCE_INSTALL PATHS"
 DEPENDENCY_DEFAULT_NAMES="FORCE_INSTALL PATHS"
 DESKTOP_PACKAGES="flameshot eog evince xsane keepassxc kcalc gedit krusader konsole xarchiver onboard midori"
-PACKAGES="sudo vim python3-pip subversion libgl1-mesa-glx"
+PACKAGES="sudo vim python3-pip libgl1-mesa-glx"
 PIP3_PACKAGES="pillow onnxruntime numpy torchvision gdown term-image opencv-python"
 PROJECT_NAME="project"
 PICTURE_NAME="test.jpg"
@@ -42,6 +42,7 @@ finish_by_rebooting () {
 }
 
 install_visual_recognition_project () {
+    force_install apt subversion
     mkdir -p $PROJECT_PATH
     svn export --force $PROJECT_GITHUB_LINK $PROJECT_PATH
     python3 $PROJECT_PATH/$PROJECT_FILE_INSTALL_NAME
