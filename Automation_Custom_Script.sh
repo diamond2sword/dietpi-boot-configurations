@@ -14,9 +14,9 @@ STRINGS=$(cat << \EOF
 DEPENDENCY_PATH="/boot/automation-script-dependencies"
 DEPENDENCY_NAMES="STRINGS SCRIPTS FORCE_INSTALL PATHS"
 DEPENDENCY_DEFAULT_NAMES="FORCE_INSTALL PATHS"
-DESKTOP_PACKAGES="flameshot eog evince xsane keepassxc kcalc gedit krusader konsole xarchiver onboard midori"
-PACKAGES="sudo vim python3-pip libgl1-mesa-glx"
+APT_PACKAGES="sudo vim python3-pip libgl1-mesa-glx subversion"
 PIP3_PACKAGES="pillow onnxruntime numpy torchvision gdown term-image opencv-python"
+DESKTOP_PACKAGES="flameshot eog evince xsane keepassxc kcalc gedit krusader konsole xarchiver onboard midori"
 PROJECT_NAME="project"
 PICTURE_NAME="test.jpg"
 PROJECT_INSTALL_FILE_NAME="install.py"
@@ -49,12 +49,9 @@ install_visual_recognition_project () {
 }
 
 install_dependency_packages () {
-    packages=("$PACKAGES")
-    pip3_packages=("$PIP3_PACKAGES")
-    desktop_packages=("$DESKTOP_PACKAGES")
-    force_install apt ${desktop_packages[@]}
-    force_install apt ${packages[@]}
-    force_install pip3 ${pip3_packages[@]}
+    force_install apt ${APT_PACKAGES[@]}
+    force_install pip3 ${PIP3_PACKAGES[@]}
+    force_install apt ${DESKTOP_PACKAGES[@]}
 }
 
 include_dependency_scripts () {  
