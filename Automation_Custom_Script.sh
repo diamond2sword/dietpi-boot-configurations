@@ -13,10 +13,9 @@ STRINGS=$(cat << \EOF
 ###################################################################
 DEPENDENCY_PATH="/boot/automation-script-dependencies"
 DEPENDENCY_NAMES="STRINGS SCRIPTS FORCE_INSTALL PATHS"
-DEPENDENCY_DEFAULT_NAMES="FORCE_INSTALL PATHS"
-APT_PACKAGES="libgl1-mesa-glx subversion"
+APT_PACKAGES="libgl1-mesa-glx subversion lynx"
 PIP3_PACKAGES="pillow onnxruntime torchvision gdown term-image opencv-python"
-DESKTOP_PACKAGES="flameshot eog evince xsane kcalc gedit onboard midori"
+DESKTOP_PACKAGES="kcalc gedit onboard"
 PROJECT_NAME="project"
 PICTURE_NAME="test.jpg"
 PROJECT_INSTALL_FILE_NAME="install.py"
@@ -91,22 +90,16 @@ SCRIPTS=$(cat << \EOF
 ####################################################################
 
 include_dependencies_default () {
-    include_all ${DEPENDENCY_DEFAULT_NAMES[@]}
-}
-
-include_all () {
-    dependencies=("$@")
-    for dependency in ${dependencies[@]}; do {
-	include $dependency
-    } done
+    include PATHS
+    include FORCE_INSTALL 5
 }
 
 include () {
     dependency_name=$1
-    file_name=$(add_sh_suffix_to $dependency_name)
-    file_path=$DEPENDENCY_PATH/$file_name
     shift
     dependency_args=("$@")
+    file_name=$(add_sh_suffix_to $dependency_name)
+    file_path=$DEPENDENCY_PATH/$file_name
     source $file_path ${dependency_args[@]}
 }
 
