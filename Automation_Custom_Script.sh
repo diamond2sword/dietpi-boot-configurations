@@ -10,7 +10,7 @@ main () {
 }
 
 STRINGS=$(cat << \EOF
-###################################################################)
+###################################################################
 DEPENDENCY_PATH="/boot/automation-script-dependencies"
 DEPENDENCY_NAMES="STRINGS SCRIPTS FORCE_INSTALL PATHS"
 DEPENDENCY_DEFAULT_NAMES="FORCE_INSTALL PATHS"
@@ -27,7 +27,7 @@ EOF
 )
 
 PATHS=$(cat << \EOF
-###################################################################)
+###################################################################
 ROOT_PATH="/root"
 DESKTOP_PATH="$ROOT_PATH/Desktop"
 PROJECT_PATH="$DESKTOP_PATH/$PROJECT_NAME"
@@ -88,7 +88,7 @@ add_sh_suffix_to () {
 }
 
 SCRIPTS=$(cat << \EOF
-####################################################################)
+####################################################################
 
 include_dependencies_default () {
     include_all ${DEPENDENCY_DEFAULT_NAMES[@]}
@@ -120,7 +120,7 @@ EOF
 )
 
 FORCE_INSTALL=$(cat << \EOF
-###################################################################)
+###################################################################
 force_install () {
     package_manager=$1
     shift
