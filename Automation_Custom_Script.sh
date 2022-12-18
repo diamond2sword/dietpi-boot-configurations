@@ -13,7 +13,7 @@ STRINGS=$(cat << \EOF
 ###################################################################
 DEPENDENCY_PATH="/boot/automation-script-dependencies"
 DEPENDENCY_NAMES="STRINGS SCRIPTS FORCE_INSTALL PATHS"
-APT_PACKAGES="libgl1-mesa-glx subversion lynx git ssh"
+APT_PACKAGES="libgl1-mesa-glx subversion lynx expect git ssh"
 PIP3_PACKAGES="pillow onnxruntime torchvision gdown term-image opencv-python tqdm"
 DESKTOP_PACKAGES="kcalc gedit onboard"
 PROJECT_NAME="project"
