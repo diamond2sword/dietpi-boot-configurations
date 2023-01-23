@@ -5,6 +5,7 @@ main () {
 	create_dependency_scripts
 	include_dependency_scripts
 	install_dependency_packages
+	start_vnc_server_service
 	install_visual_recognition_project
 	finish_by_rebooting
 }
@@ -22,6 +23,7 @@ PROJECT_INSTALL_FILE_NAME="install.py"
 PROJECT_ANY_CLASS_NAME="Any"
 PROJECT_TEST_DATASET_NAME="test-dataset"
 PROJECT_GITHUB_LINK="https://github.com/diamond2sword/visual-recognition-project/trunk/project-raspberrypi/project-v1"
+BOOT_SCRIPT_PATH="/var/lib/dietpi-autostart/custom.sh"
 EOF
 )
 
@@ -44,6 +46,12 @@ install_visual_recognition_project () {
     mkdir -p $PROJECT_PATH
     svn export --force $PROJECT_GITHUB_LINK $PROJECT_PATH
     python3 $PROJECT_PATH/$PROJECT_FILE_INSTALL_NAME
+}
+
+start_vnc_server_service () {
+	systemctl enable vncserver
+	systemctl restart vncserver
+	/usr/local/bin/vncserver start
 }
 
 install_dependency_packages () {
