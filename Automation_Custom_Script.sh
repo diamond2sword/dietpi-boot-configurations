@@ -4,8 +4,8 @@ main () {
 	include_dependency_strings
 	create_dependency_scripts
 	include_dependency_scripts
-	install_dependency_packages
-	install_visual_recognition_project
+	#install_dependency_packages
+	#install_visual_recognition_project
 	finish_by_rebooting
 }
 
