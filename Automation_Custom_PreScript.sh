@@ -1,24 +1,9 @@
 main () {
 	fix_fs_partition
 	configure_usb_for_vnc
-	enable_vnc_service
-	create_boot_script
 }
 
 NET_CONF_DIR="/etc/network/interfaces.d"
-BOOT_SCRIPT_PATH="/var/lib/dietpi-autostart/custom.sh"
-
-create_boot_script () {
-eval << "EOF" | sed -r 's/^(\t| )+$//g'
-	cat << "EOF2" > $BOOT_SCRIPT_PATH
-		/usr/local/bin/vncserver start
-	EOF2
-EOF
-}
-
-enable_vnc_service () {
-	systemctl enable vncserver
-}
 
 configure_usb_for_vnc () {
 eval << "EOF" | sed -r 's/^(\t| )+$//g'
