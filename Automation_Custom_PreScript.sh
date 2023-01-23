@@ -1,17 +1,21 @@
 main () {
 	fix_fs_partition
-	install_usb_vnc
-	
+	configure_usb_for_vnc
+	create_boot_script
 }
 
 NET_CONF_DIR="/etc/network/interfaces.d"
 BOOT_SCRIPT_PATH="/var/lib/dietpi-autostart/custom.sh"
 
-fix_fs_partition () {
- 	systemctl enable dietpi-fs_partition_resize
+create_boot_script () {
+eval << "EOF" | sed -r 's/^(\t| )+$//g'
+	cat << "EOF2" > $BOOT_SCRIPT_PATH
+		/usr/local/bin/vncserver start
+	EOF2
+EOF
 }
 
-install_usb_vnc () {
+configure_usb_for_vnc () {
 eval << "EOF" | sed -r 's/^(\t| )+$//g'
 	mkdir -p $NET_CONF_DIR
 	
@@ -32,10 +36,6 @@ eval << "EOF" | sed -r 's/^(\t| )+$//g'
 EOF
 }
 
-add_boot_script () {
-eval << "EOF" | sed -r 's/^(\t| )+$//g'
-	cat << "EOF2" > $BOOT_SCRIPT_PATH
-		/usr/local/bin/vncserver start
-	EOF2
-EOF
+fix_fs_partition () {
+ 	systemctl enable dietpi-fs_partition_resize
 }
