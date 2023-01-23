@@ -132,7 +132,7 @@ AUTO_SETUP_GLOBAL_PASSWORD=dietpi
 AUTO_SETUP_INSTALL_SOFTWARE_ID=23 # lxde
 AUTO_SETUP_INSTALL_SOFTWARE_ID=120 # realvnc
 AUTO_SETUP_INSTALL_SOFTWARE_ID=20 # vim
-#AUTO_SETUP_INSTALL_SOFTWARE_ID=130 # python3-pip
+AUTO_SETUP_INSTALL_SOFTWARE_ID=130 # python3-pip
 
 #------------------------------------------------------------------------------------------------------
 ##### Misc DietPi program settings #####
