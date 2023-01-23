@@ -1,6 +1,7 @@
 main () {
 	fix_fs_partition
 	configure_usb_for_vnc
+	enable_vnc_service
 	create_boot_script
 }
 
@@ -13,6 +14,10 @@ eval << "EOF" | sed -r 's/^(\t| )+$//g'
 		/usr/local/bin/vncserver start
 	EOF2
 EOF
+}
+
+enable_vnc_service () {
+	systemctl enable vncserver
 }
 
 configure_usb_for_vnc () {
