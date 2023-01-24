@@ -50,7 +50,7 @@ rm -rf $APPLICATIONS_PATH/$PROJECT_APP_FILE_NAME.desktop $DESKTOP_PATH/$PROJECT_
 cat << EOF > $APPLICATIONS_PATH/$PROJECT_APP_FILE_NAME.desktop
 [Desktop Entry]
 Name=$PROJECT_APP_FILE_NAME
-Exec=xterminal-emulator -e "python3 $PROJECT_PATH/$PROJECT_APP_FILE_NAME"
+Exec=x-terminal-emulator -e 'python3 $PROJECT_PATH/$PROJECT_APP_FILE_NAME; read'
 Type=Application
 Categories=Application
 EOF
