@@ -49,7 +49,7 @@ create_application_launcher () {
 cat << EOF > $APPLICATIONS_PATH/$PROJECT_APP_FILE_NAME.desktop
 [Desktop Entry]
 Name=$PROJECT_APP_FILE_NAME
-Exec=python3 $PROJECT_PATH/$PROJECT_APP_FILE_NAME
+Exec=xterminal-emulator -e "python3 $PROJECT_PATH/$PROJECT_APP_FILE_NAME"
 Type=Application
 Categories=Application
 EOF
