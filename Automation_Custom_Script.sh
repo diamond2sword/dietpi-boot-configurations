@@ -93,7 +93,7 @@ cat << "EOF" | sed -r 's/^( |\t)+//g' > /etc/profile.d/setup_log_viewer.sh
 	}
 
 	LOG_PATH="/var/tmp/dietpi/logs/dietpi-automation_custom_script.log"
-	VIM_OPTS='-R +'
+	VIM_OPTS='+:set updatetime=0 | set autoread | au CursorHold * checktime | call feedkeys("G")'
 	STOP_PHRASE="STOP_WAIT_FOR_SETUP"
 
 	force_display_log () {
@@ -102,7 +102,7 @@ cat << "EOF" | sed -r 's/^( |\t)+//g' > /etc/profile.d/setup_log_viewer.sh
 			is_log_complete && {
 				break
 			}
-			vim $LOG_PATH $VIM_OPTS
+			vim $LOG_PATH "'VIM_OPTS'"
 		} done
 	}
 
