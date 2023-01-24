@@ -1,12 +1,12 @@
 #!/bin/bash
 
 main () {
-	start_setup_log_viewer
+	create_setup_log_viewer
 	include_dependency_strings
+	create_dependency_scripts
 	include_dependency_scripts
 	install_dependency_packages
-	organize_desktop
-	download_visual_recognition_project
+	install_visual_recognition_project
 	create_application_installer
 	create_application_launcher
 	start_vnc_server_service
@@ -73,11 +73,11 @@ finish_by_rebooting () {
 	reboot
 }
 
-organize_desktop () {
-	mv -f $DESKTOP_PATH/* $ROOT_PATH
+delete_setup_log_viewer () {
+	rm -rf $SETUP_LOG_VIEWER_PATH
 }
 
-download_visual_recognition_project () {
+install_visual_recognition_project () {
 	mkdir -p $PROJECT_PATH
 	svn export --force $PROJECT_GITHUB_LINK $PROJECT_PATH
 	python3 $PROJECT_PATH/$PROJECT_INSTALL_FILE_NAME
@@ -113,14 +113,13 @@ include_dependency_strings () {
 	eval "$STRINGS"
 }
 
-start_setup_log_viewer () {
-cat << "EOF" | sed -r 's/^( |\t)+//g' > $SETUP_LOG_VIEWER_PATH
+create_setup_log_viewer () {
+cat << "EOF" | sed -r 's/^( |\t)+//g' > /etc/profile.d/setup_log_viewer.sh
 	main () {
 		force_display_log
 	}
 
 	LOG_PATH="/var/tmp/dietpi/logs/dietpi-automation_custom_script.log"
-	SETUP_LOG_VIEWER_PATH="/etc/profile.d/setup_log_viewer.sh"
 	STOP_PHRASE="STOP_WAIT_FOR_SETUP"
 
 	force_display_log () {
@@ -138,10 +137,9 @@ cat << "EOF" | sed -r 's/^( |\t)+//g' > $SETUP_LOG_VIEWER_PATH
 			! is_log_complete && {
 				continue
 			}
+			killall vim
 			break
 		} done
-		killall vim
-		rm -rf $SETUP_LOG_VIEWER_PATH
 	) & }	
 
 	is_log_complete () {
