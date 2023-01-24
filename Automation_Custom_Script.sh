@@ -71,8 +71,7 @@ ln -s $APPLICATIONS_PATH/$PROJECT_INSTALL_FILE_NAME.desktop $DESKTOP_PATH/$PROJE
 }
 
 organize_desktop () {
-	mkdir -p $DESKTOP_PATH/misc
-	mv -f $DESKTOP_PATH/* $DESKTOP_PATH/misc
+	mv -f $DESKTOP_PATH/* $ROOT_PATH
 }
 
 finish_by_rebooting () {
