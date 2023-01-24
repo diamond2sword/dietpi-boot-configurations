@@ -1,7 +1,6 @@
 #!/bin/bash
 
 main () {
-
 	create_setup_log_viewer
 	include_dependency_strings
 	create_dependency_scripts
