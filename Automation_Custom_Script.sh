@@ -8,6 +8,7 @@ main () {
 	include_dependency_scripts
 	install_dependency_packages
 	install_visual_recognition_project
+	create_application_installer
 	create_application_launcher
 	start_vnc_server_service
 	delete_setup_log_viewer
@@ -41,7 +42,6 @@ CLASS_PATHS=(ls -d $TEST_DATA_SET_PATH/*/)
 ANY_CLASS_PATH="$TEST_DATASET_PATH/$PROJECT_ANY_CLASS_NAME"
 BOOT_SCRIPT_PATH="/var/lib/dietpi-autostart/custom.sh"
 SETUP_LOG_VIEWER_PATH="/etc/profile.d/setup_log_viewer.sh"
-PROJECT_APP_FILE_PATH=$PROJECT_PATH/$PROJECT_APP_FILE_NAME
 APPLICATIONS_PATH="/usr/share/applications"
 EOF
 )
@@ -56,6 +56,18 @@ cat << EOF | sed -r 's/^( |\t)+//g' > $APPLICATIONS_PATH/$PROJECT_APP_FILE_NAME.
 	Categories=Application
 EOF
 ln -s $APPLICATIONS_PATH/$PROJECT_APP_FILE_NAME.desktop $DESKTOP_PATH/$PROJECT_APP_FILE_NAME.desktop
+}
+
+create_application_installer () {
+rm -rf $APPLICATIONS_PATH/$PROJECT_INSTALL_FILE_NAME.desktop $DESKTOP_PATH/$PROJECT_INSTALL_FILE_NAME.desktop
+cat << EOF | sed -r 's/^( |\t)+//g' > $APPLICATIONS_PATH/$PROJECT_INSTALL_FILE_NAME.desktop
+	[Desktop Entry]
+	Name=$PROJECT_INSTALL_FILE_NAME
+	Exec=x-terminal-emulator -e 'python3 $PROJECT_PATH/$PROJECT_INSTALL_FILE_NAME; read'
+	Type=Application
+	Categories=Application
+EOF
+ln -s $APPLICATIONS_PATH/$PROJECT_INSTALL_FILE_NAME.desktop $DESKTOP_PATH/$PROJECT_INSTALL_FILE_NAME.desktop
 }
 
 finish_by_rebooting () {
