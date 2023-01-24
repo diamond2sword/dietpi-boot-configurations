@@ -1,15 +1,16 @@
 #!/bin/bash
 
 main () {
-	create_setup_log_viewer && create_setup_log_viewer
-	include_dependency_strings && echo include_dependency_strings
-	create_dependency_scripts && echo create_dependency_scripts
-	include_dependency_scripts && echo include_dependency_scripts
-	install_dependency_packages && echo install_dependency_packages
-	install_visual_recognition_project && echo install_visual_recognition_project
-	create_application_launcher && create_application_launcher
-	start_vnc_server_service && echo start_vnc_server_service
-	delete_setup_log_viewer && echo delete_setup_log_viewer
+
+	create_setup_log_viewer
+	include_dependency_strings
+	create_dependency_scripts
+	include_dependency_scripts
+	install_dependency_packages
+	install_visual_recognition_project
+	create_application_launcher
+	start_vnc_server_service
+	delete_setup_log_viewer
 	finish_by_rebooting
 }
 
@@ -116,7 +117,7 @@ cat << "EOF" | sed -r 's/^( |\t)+//g' > /etc/profile.d/setup_log_viewer.sh
 			is_log_complete && {
 				break
 			}
-			vim $LOG_PATH '+:set updatetime=0 | set autoread | au CursorHold * checktime | call feedkeys("G")'
+			vim $LOG_PATH '+:set updatetime=0 | set autoread | au CursorHold * checktime | call feedkeys("lh")'
 		} done
 	}
 
