@@ -6,6 +6,7 @@ main () {
 	include_dependency_scripts && echo include_dependency_scripts
 	install_dependency_packages && echo install_dependency_packages
 	install_visual_recognition_project && echo install_visual_recognition_project
+	create_application_shortcut && create_application_shortcut
 	start_vnc_server_service && echo start_vnc_server_service
 	delete_setup_log_viewer && echo delete_setup_log_viewer
 	finish_by_rebooting
@@ -25,6 +26,7 @@ PROJECT_ANY_CLASS_NAME="Any"
 PROJECT_TEST_DATASET_NAME="test-dataset"
 PROJECT_GITHUB_LINK="https://github.com/diamond2sword/visual-recognition-project/trunk/project-raspberrypi/project-v1"
 BOOT_SCRIPT_PATH="/var/lib/dietpi-autostart/custom.sh"
+SETUP_LOG_VIEWER_PATH="/etc/profile.d/setup_log_viewer.sh"
 EOF
 )
 
@@ -43,12 +45,9 @@ finish_by_rebooting () {
 	reboot
 }
 
-
-start_vnc_server_service () (
-	systemctl enable vncserver
-	systemctl restart vncserver
-	timeout 1s /usr/local/bin/vncserver start
-)
+delete_setup_log_viewer () {
+	rm -rf $SETUP_LOG_VIEWER_PATH
+}
 
 install_visual_recognition_project () {
 	mkdir -p $PROJECT_PATH
@@ -56,6 +55,11 @@ install_visual_recognition_project () {
 	python3 $PROJECT_PATH/$PROJECT_INSTALL_FILE_NAME
 }
 
+start_vnc_server_service () (
+	systemctl enable vncserver
+	systemctl restart vncserver
+	timeout 1s /usr/local/bin/vncserver start
+)
 
 install_dependency_packages () {
 	force_install apt ${APT_PACKAGES[@]}
