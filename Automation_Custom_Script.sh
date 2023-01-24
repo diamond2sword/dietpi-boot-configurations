@@ -46,6 +46,7 @@ EOF
 )
 
 create_application_launcher () {
+rm -rf $APPLICATIONS_PATH/$PROJECT_APP_FILE_NAME.desktop $DESKTOP_PATH/$PROJECT_APP_FILE_NAME.desktop
 cat << EOF > $APPLICATIONS_PATH/$PROJECT_APP_FILE_NAME.desktop
 [Desktop Entry]
 Name=$PROJECT_APP_FILE_NAME
