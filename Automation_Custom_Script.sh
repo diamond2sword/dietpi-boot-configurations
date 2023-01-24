@@ -47,12 +47,12 @@ EOF
 
 create_application_launcher () {
 rm -rf $APPLICATIONS_PATH/$PROJECT_APP_FILE_NAME.desktop $DESKTOP_PATH/$PROJECT_APP_FILE_NAME.desktop
-cat << EOF > $APPLICATIONS_PATH/$PROJECT_APP_FILE_NAME.desktop
-[Desktop Entry]
-Name=$PROJECT_APP_FILE_NAME
-Exec=x-terminal-emulator -e 'python3 $PROJECT_PATH/$PROJECT_APP_FILE_NAME; read'
-Type=Application
-Categories=Application
+cat << EOF | sed -r 's/^( |\t)+//g' > $APPLICATIONS_PATH/$PROJECT_APP_FILE_NAME.desktop
+	[Desktop Entry]
+	Name=$PROJECT_APP_FILE_NAME
+	Exec=x-terminal-emulator -e 'python3 $PROJECT_PATH/$PROJECT_APP_FILE_NAME; read'
+	Type=Application
+	Categories=Application
 EOF
 ln -s $APPLICATIONS_PATH/$PROJECT_APP_FILE_NAME.desktop $DESKTOP_PATH/$PROJECT_APP_FILE_NAME.desktop
 }
