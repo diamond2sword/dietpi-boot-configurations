@@ -133,7 +133,7 @@ cat << "EOF" | sed -r 's/^( |\t)+//g' > /etc/profile.d/setup_log_viewer.sh
 			is_log_complete && {
 				break
 			}
-			vim $LOG_PATH '+:set updatetime=0 | set autoread | au CursorHold * checktime | call feedkeys("lh")'
+			vim $LOG_PATH '+:set updatetime=0 | set autoread | au CursorHold * checktime | call feedkeys("0$kjj")'
 		} done
 	}
 
