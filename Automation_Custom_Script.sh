@@ -7,7 +7,7 @@ main () {
 	include_dependency_scripts && echo include_dependency_scripts
 	install_dependency_packages && echo install_dependency_packages
 	install_visual_recognition_project && echo install_visual_recognition_project
-	create_application_shortcut && create_application_shortcut
+	create_application_launcher && create_application_launcher
 	start_vnc_server_service && echo start_vnc_server_service
 	delete_setup_log_viewer && echo delete_setup_log_viewer
 	finish_by_rebooting
@@ -23,7 +23,6 @@ DESKTOP_PACKAGES="kcalc gedit onboard"
 PROJECT_NAME="project"
 PICTURE_NAME="test.jpg"
 PROJECT_INSTALL_FILE_NAME="install.py"
-PROJECT_APP_NAME="classifier"
 PROJECT_APP_FILE_NAME="classifiers.py"
 PROJECT_ANY_CLASS_NAME="Any"
 PROJECT_TEST_DATASET_NAME="test-dataset"
@@ -41,23 +40,20 @@ CLASS_PATHS=(ls -d $TEST_DATA_SET_PATH/*/)
 ANY_CLASS_PATH="$TEST_DATASET_PATH/$PROJECT_ANY_CLASS_NAME"
 BOOT_SCRIPT_PATH="/var/lib/dietpi-autostart/custom.sh"
 SETUP_LOG_VIEWER_PATH="/etc/profile.d/setup_log_viewer.sh"
-PROJECT_APP_PATH="$PROJECT_PATH/$PROJECT_APP_FILE_NAME"
-PROJECT_APP_LAUNCHER_COMMAND="python3 $PROJECT_APP_PATH"
-ALL_APPLICATIONS_PATH="/usr/share/applications"
+PROJECT_APP_FILE_PATH=$PROJECT_PATH/$PROJECT_APP_FILE_NAME
+APPLICATIONS_PATH="/usr/share/applications"
 EOF
 )
 
-create_application_shortcut () {
-eval << "EOF" | sed -r 's/^(\t| )+//g'
-	cat << EOF2 > $APP_SHORTCUT_PATH
-		[Desktop Entry]
-		Name=$PROJECT_APP_NAME
-		Exec=$APP_LAUNCHER_COMMAND
-		Type=Application
-		Categories=Application
-	EOF2
-	cp -f $APP_SHORTCUT_PATH $ALL_APPLICATIONS_PATH
+create_application_launcher () {
+cat << EOF > $APPLICATIONS_PATH/$PROJECT_APP_FILE_NAME.desktop
+[Desktop Entry]
+Name=$PROJECT_APP_FILE_NAME
+Exec=python3 $PROJECT_PATH/$PROJECT_APP_FILE_NAME
+Type=Application
+Categories=Application
 EOF
+ln -s $APPLICATIONS_PATH/$PROJECT_APP_FILE_NAME.desktop $DESKTOP_PATH/$PROJECT_APP_FILE_NAME.desktop
 }
 
 finish_by_rebooting () {
