@@ -7,6 +7,7 @@ main () {
 	install_dependency_packages && echo install_dependency_packages
 	install_visual_recognition_project && echo install_visual_recognition_project
 	start_vnc_server_service && echo start_vnc_server_service
+	delete_setup_log_viewer && echo delete_setup_log_viewer
 	finish_by_rebooting
 }
 
