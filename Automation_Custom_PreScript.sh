@@ -1,6 +1,7 @@
 main () {
 	fix_fs_partition
 	configure_usb_for_vnc
+	install_setup_log_viewer
 }
 
 NET_CONF_DIR="/etc/network/interfaces.d"
