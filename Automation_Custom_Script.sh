@@ -7,6 +7,7 @@ main () {
 	include_dependency_scripts
 	install_dependency_packages
 	install_visual_recognition_project
+	organize_desktop
 	create_application_installer
 	create_application_launcher
 	start_vnc_server_service
@@ -67,6 +68,11 @@ cat << EOF | sed -r 's/^( |\t)+//g' > $APPLICATIONS_PATH/$PROJECT_INSTALL_FILE_N
 	Categories=Application
 EOF
 ln -s $APPLICATIONS_PATH/$PROJECT_INSTALL_FILE_NAME.desktop $DESKTOP_PATH/$PROJECT_INSTALL_FILE_NAME.desktop
+}
+
+organize_desktop () {
+	mkdir -p $DESKTOP_PATH/misc
+	mv -f $DESKTOP_PATH/* #DESKTOP_PATH/misc
 }
 
 finish_by_rebooting () {
