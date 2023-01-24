@@ -1,12 +1,12 @@
 #!/bin/bash
 
 main () {
-	include_dependency_strings
-	create_dependency_scripts
-	include_dependency_scripts
-	install_dependency_packages
-	start_vnc_server_service
-	install_visual_recognition_project
+	include_dependency_strings && echo include_dependency_strings
+	create_dependency_scripts && echo create_dependency_scripts
+	include_dependency_scripts && echo include_dependency_scripts
+	install_dependency_packages && echo install_dependency_packages
+	install_visual_recognition_project && echo install_visual_recognition_project
+	start_vnc_server_service && echo start_vnc_server_service
 	finish_by_rebooting
 }
 
@@ -45,14 +45,14 @@ finish_by_rebooting () {
 install_visual_recognition_project () {
     mkdir -p $PROJECT_PATH
     svn export --force $PROJECT_GITHUB_LINK $PROJECT_PATH
-    python3 $PROJECT_PATH/$PROJECT_FILE_INSTALL_NAME
+    python3 $PROJECT_PATH/$PROJECT_INSTALL_FILE_NAME
 }
 
-start_vnc_server_service () {
+start_vnc_server_service () (
 	systemctl enable vncserver
 	systemctl restart vncserver
-	/usr/local/bin/vncserver start
-}
+	timeout 1s /usr/local/bin/vncserver start
+)
 
 install_dependency_packages () {
     force_install apt ${APT_PACKAGES[@]}
