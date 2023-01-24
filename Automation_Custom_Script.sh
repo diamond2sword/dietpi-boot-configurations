@@ -23,11 +23,11 @@ DESKTOP_PACKAGES="kcalc gedit onboard"
 PROJECT_NAME="project"
 PICTURE_NAME="test.jpg"
 PROJECT_INSTALL_FILE_NAME="install.py"
+PROJECT_APP_NAME="classifier"
+PROJECT_APP_FILE_NAME="classifiers.py"
 PROJECT_ANY_CLASS_NAME="Any"
 PROJECT_TEST_DATASET_NAME="test-dataset"
 PROJECT_GITHUB_LINK="https://github.com/diamond2sword/visual-recognition-project/trunk/project-raspberrypi/project-v1"
-BOOT_SCRIPT_PATH="/var/lib/dietpi-autostart/custom.sh"
-SETUP_LOG_VIEWER_PATH="/etc/profile.d/setup_log_viewer.sh"
 EOF
 )
 
@@ -39,8 +39,26 @@ PROJECT_PATH="$DESKTOP_PATH/$PROJECT_NAME"
 TEST_DATASET_PATH="$PROJECT_PATH/$PROJECT_TEST_DATASET_NAME"
 CLASS_PATHS=(ls -d $TEST_DATA_SET_PATH/*/)
 ANY_CLASS_PATH="$TEST_DATASET_PATH/$PROJECT_ANY_CLASS_NAME"
+BOOT_SCRIPT_PATH="/var/lib/dietpi-autostart/custom.sh"
+SETUP_LOG_VIEWER_PATH="/etc/profile.d/setup_log_viewer.sh"
+PROJECT_APP_PATH="$PROJECT_PATH/$PROJECT_APP_FILE_NAME"
+PROJECT_APP_LAUNCHER_COMMAND="python3 $PROJECT_APP_PATH"
+ALL_APPLICATIONS_PATH="/usr/share/applications"
 EOF
 )
+
+create_application_shortcut () {
+eval << "EOF" | sed -r 's/^(\t| )+//g'
+	cat << EOF2 > $APP_SHORTCUT_PATH
+		[Desktop Entry]
+		Name=$PROJECT_APP_NAME
+		Exec=$APP_LAUNCHER_COMMAND
+		Type=Application
+		Categories=Application
+	EOF2
+	cp -f $APP_SHORTCUT_PATH $ALL_APPLICATIONS_PATH
+EOF
+}
 
 finish_by_rebooting () {
 	reboot
